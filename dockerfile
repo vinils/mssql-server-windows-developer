@@ -1,6 +1,9 @@
 ARG  FROM_TAG=ltsc2019
 FROM mcr.microsoft.com/windows/servercore:${FROM_TAG}
 
+LABEL company=”VLS”
+LABEL version=”1.0.0"
+
 # Download Links:
 ENV exe "https://go.microsoft.com/fwlink/?linkid=840945"
 ENV box "https://go.microsoft.com/fwlink/?linkid=840944"
