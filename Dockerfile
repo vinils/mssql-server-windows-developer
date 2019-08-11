@@ -1,8 +1,8 @@
 ARG  FROM_TAG=ltsc2019
 FROM mcr.microsoft.com/windows/servercore:${FROM_TAG}
 
-LABEL company=”VLS”
-LABEL version=”1.0.0"
+LABEL company="VLS"
+LABEL version="1.0.1"
 
 # Download Links:
 ENV exe "https://go.microsoft.com/fwlink/?linkid=840945"
@@ -32,4 +32,4 @@ RUN stop-service MSSQLSERVER ; \
 
 HEALTHCHECK CMD [ "sqlcmd", "-Q", "select 1" ]
 
-CMD .\start -sa_password $env:sa_password -ACCEPT_EULA $env:ACCEPT_EULA -attach_dbs \"$env:attach_dbs\" -Verbose
+CMD .\start -sa_password $env:sa_password -ACCEPT_EULA $env:ACCEPT_EULA -attach_dbs \"$env:attach_dbs\" -MSSQL_AGENT_ENABLED $env:MSSQL_AGENT_ENABLED -Verbose
